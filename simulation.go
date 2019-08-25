@@ -505,3 +505,5 @@ func (s *simscreen) HasKey(Key) bool {
 }
 
 func (s *simscreen) SetTitle(title string) {}
+
+func (s *simscreen) SetCursorColorShape(color, shape string) {}

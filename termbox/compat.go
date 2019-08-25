@@ -19,7 +19,7 @@ package termbox
 import (
 	"errors"
 
-	"github.com/zyedidia/tcell"
+	"github.com/hanspr/tcell"
 )
 
 var screen tcell.Screen

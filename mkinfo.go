@@ -42,7 +42,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/zyedidia/tcell"
+	"github.com/hanspr/tcell"
 )
 
 // #include <curses.h>

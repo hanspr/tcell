@@ -195,6 +195,8 @@ type Screen interface {
 	HasKey(Key) bool
 
 	SetTitle(string)
+
+	SetCursorColorShape(string, string)
 }
 
 // NewScreen returns a default Screen suitable for the user's terminal

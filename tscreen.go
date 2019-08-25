@@ -1503,3 +1503,16 @@ func (t *tScreen) SetTitle(title string) {
 		t.hasSetTitle = true
 	}
 }
+
+func (t *tScreen) SetCursorColorShape(color, shape string) {
+	if color != "" {
+		t.TPuts("\033]12;" + color + "\007")
+	}
+	if shape == "block" {
+		t.TPuts("\033[0 q")
+	} else if shape == "ibeam" {
+		t.TPuts("\033[5 q")
+	} else if shape == "underline" {
+		t.TPuts("\033[3 q")
+	}
+}
