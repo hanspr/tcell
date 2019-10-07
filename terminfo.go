@@ -195,8 +195,10 @@ type Terminfo struct {
 	KeyAltShfEnd    string `json:"_kaEND,omitempty"`
 	KeyMetaShfHome  string `json:"_kmHOME,omitempty"`
 	KeyMetaShfEnd   string `json:"_kmEND,omitempty"`
-	KeyCtrlPgUp     string
-	KeyCtrlPgDn     string
+	KeyCtrlPgUp     string `json:"_kcpp,omitempty"`
+	KeyCtrlPgDn     string `json:"_kcpn,omitempty"`
+	KeyShfPgUp      string `json:"_kspp,omitempty"`
+	KeyShfPgDn      string `json:"_kspn,omitempty"`
 }
 
 type stackElem struct {

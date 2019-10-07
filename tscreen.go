@@ -316,6 +316,8 @@ func (t *tScreen) prepareKeys() {
 	t.prepareKeyMod(KeyDown, ModAlt|ModShift, ti.KeyAltShfDown)
 	t.prepareKeyMod(KeyHome, ModAlt|ModShift, ti.KeyAltShfHome)
 	t.prepareKeyMod(KeyEnd, ModAlt|ModShift, ti.KeyAltShfEnd)
+	t.prepareKeyMod(KeyPgUp, ModShift, ti.KeyShfPgUp)
+	t.prepareKeyMod(KeyPgDn, ModShift, ti.KeyShfPgDn)
 
 	t.prepareKeyMod(KeyRight, ModAlt|ModShift, ti.KeyMetaShfRight)
 	t.prepareKeyMod(KeyLeft, ModAlt|ModShift, ti.KeyMetaShfLeft)
