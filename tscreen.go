@@ -415,8 +415,6 @@ func (t *tScreen) ResetTitle() {
 }
 
 func (t *tScreen) Fini() {
-	t.DisableMouse()
-	time.Sleep(100 * time.Millisecond)
 	ti := t.ti
 	t.Lock()
 	t.cells.Resize(0, 0)
@@ -428,6 +426,8 @@ func (t *tScreen) Fini() {
 	t.TPuts(ti.ExitKeypad)
 	// Close bracketed paste
 	t.TPuts("\x1b[?2004l")
+	t.DisableMouse()
+	time.Sleep(100 * time.Millisecond)
 	t.curstyle = Style(-1)
 	t.clear = false
 	t.fini = true
