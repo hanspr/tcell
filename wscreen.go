@@ -19,11 +19,12 @@ package tcell
 
 import (
 	"errors"
-	"github.com/micro-editor/tcell/v2/terminfo"
 	"strings"
 	"sync"
 	"syscall/js"
 	"unicode/utf8"
+
+	"github.com/micro-editor/tcell/v2/terminfo"
 )
 
 func NewTerminfoScreen() (Screen, error) {
@@ -380,7 +381,7 @@ func (t *wScreen) onKeyEvent(this js.Value, args []js.Value) interface{} {
 }
 
 func (t *wScreen) onPaste(this js.Value, args []js.Value) interface{} {
-	t.postEvent(NewEventPaste(args[0].Bool()))
+	t.postEvent(NewEventPaste(""))
 	return nil
 }
 
@@ -646,4 +647,12 @@ var curStyleClasses = map[CursorStyle]string{
 
 func LookupTerminfo(name string) (ti *terminfo.Terminfo, e error) {
 	return nil, errors.New("LookupTermInfo not supported")
+}
+
+func (t *wScreen) GetClipboard(register string) ([]byte, error) {
+	return nil, nil
+}
+
+func (t *wScreen) SetClipboard(register string, text []byte) error {
+	return nil
 }
