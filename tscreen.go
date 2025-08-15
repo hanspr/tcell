@@ -30,7 +30,6 @@ import (
 	"time"
 	"unicode/utf8"
 
-	"golang.org/x/term"
 	"golang.org/x/text/transform"
 
 	"github.com/micro-editor/tcell/v2/terminfo"
@@ -166,14 +165,14 @@ type tScreen struct {
 	pasteOSC52Start string
 	pasteOSC52End   string
 	osc52           chan []byte
-	saved           *term.State
-	stopQ           chan struct{}
-	eventQ          chan Event
-	running         bool
-	wg              sync.WaitGroup
-	mouseFlags      MouseFlags
-	pasteEnabled    bool
-	focusEnabled    bool
+	// saved           *term.State
+	stopQ        chan struct{}
+	eventQ       chan Event
+	running      bool
+	wg           sync.WaitGroup
+	mouseFlags   MouseFlags
+	pasteEnabled bool
+	focusEnabled bool
 
 	sync.Mutex
 }
@@ -1523,7 +1522,7 @@ func (t *tScreen) parseRune(buf *bytes.Buffer, evs *[]Event) (bool, bool) {
 	return true, false
 }
 
-func (t *tScreen) parseOSC52Paste(buf *bytes.Buffer, evs *[]Event) (bool, bool) {
+func (t *tScreen) parseOSC52Paste(buf *bytes.Buffer, _ *[]Event) (bool, bool) {
 	str := buf.String()
 
 	prefixLen := len(t.pasteOSC52Start) + 2
@@ -2036,4 +2035,17 @@ func (t *tScreen) SetClipboard(register string, text []byte) error {
 	t.TPuts(fmt.Sprintf(t.pasteSet, r, str))
 
 	return err
+}
+
+func (t *tScreen) SetCursorColorShape(color, shape string) {
+	if color != "" {
+		t.TPuts("\033]12;" + color + "\007")
+	}
+	if shape == "block" {
+		t.TPuts("\033[0 q")
+	} else if shape == "ibeam" {
+		t.TPuts("\033[5 q")
+	} else if shape == "underline" {
+		t.TPuts("\033[3 q")
+	}
 }

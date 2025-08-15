@@ -40,9 +40,9 @@ type stdIoTty struct {
 	sig   chan os.Signal
 	cb    func()
 	stopQ chan struct{}
-	dev   string
-	wg    sync.WaitGroup
-	l     sync.Mutex
+	// dev   string
+	wg sync.WaitGroup
+	l  sync.Mutex
 }
 
 func (tty *stdIoTty) Read(b []byte) (int, error) {

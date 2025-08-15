@@ -503,3 +503,5 @@ func (s *simscreen) GetClipboard(string) ([]byte, error) {
 func (s *simscreen) SetClipboard(string, []byte) error {
 	return errors.New("not supported")
 }
+
+func (s *simscreen) SetCursorColorShape(color, shape string) {}

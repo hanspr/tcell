@@ -230,7 +230,7 @@ func (cb *CellBuffer) Fill(r rune, style Style) {
 	}
 }
 
-var runeConfig *runewidth.Condition
+// var runeConfig *runewidth.Condition
 
 func init() {
 	// The defaults for the runewidth package are poorly chosen for terminal
