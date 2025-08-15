@@ -2039,13 +2039,13 @@ func (t *tScreen) SetClipboard(register string, text []byte) error {
 
 func (t *tScreen) SetCursorColorShape(color, shape string) {
 	if color != "" {
-		t.TPuts("\033]12;" + color + "\007")
+		t.TPuts("\x1b]12;" + color + "\a")
 	}
 	if shape == "block" {
-		t.TPuts("\033[0 q")
+		t.TPuts("\x1b[0 q")
 	} else if shape == "ibeam" {
-		t.TPuts("\033[5 q")
+		t.TPuts("\x1b[5 q")
 	} else if shape == "underline" {
-		t.TPuts("\033[3 q")
+		t.TPuts("\x1b[3 q")
 	}
 }
