@@ -2042,10 +2042,10 @@ func (t *tScreen) SetCursorColorShape(color, shape string) {
 		t.TPuts("\x1b]12;" + color + "\a")
 	}
 	if shape == "block" {
-		t.TPuts("\x1b[0 q")
+		t.SetCursorStyle(CursorStyleDefault)
 	} else if shape == "ibeam" {
-		t.TPuts("\x1b[5 q")
+		t.SetCursorStyle(CursorStyleBlinkingBar)
 	} else if shape == "underline" {
-		t.TPuts("\x1b[3 q")
+		t.SetCursorStyle(CursorStyleBlinkingUnderline)
 	}
 }
