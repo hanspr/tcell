@@ -244,7 +244,7 @@ func init() {
 	// might be more memory conscious.  If that's you, set the TCELL_MINIMIZE
 	// environment variable.
 	if os.Getenv("TCELL_MINIMIZE") == "" {
-		// micro-editor/tcell: We do not want LUT creation because it worsens
+		// hanspr/tcell: We do not want LUT creation because it worsens
 		// startup time.
 		// runewidth.CreateLUT()
 	}

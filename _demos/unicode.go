@@ -23,8 +23,8 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/micro-editor/tcell/v2"
-	"github.com/micro-editor/tcell/v2/encoding"
+	"github.com/hanspr/tcell/v2"
+	"github.com/hanspr/tcell/v2/encoding"
 	runewidth "github.com/mattn/go-runewidth"
 )
 

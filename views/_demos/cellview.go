@@ -21,8 +21,8 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/micro-editor/tcell/v2"
-	"github.com/micro-editor/tcell/v2/views"
+	"github.com/hanspr/tcell/v2"
+	"github.com/hanspr/tcell/v2/views"
 )
 
 var app = &views.Application{}

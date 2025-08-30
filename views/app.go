@@ -17,7 +17,7 @@ package views
 import (
 	"sync"
 
-	"github.com/micro-editor/tcell/v2"
+	"github.com/hanspr/tcell/v2"
 )
 
 // Application represents an event-driven application running on a screen.
