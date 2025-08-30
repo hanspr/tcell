@@ -30,13 +30,12 @@ import (
 	"time"
 	"unicode/utf8"
 
-	"golang.org/x/term"
 	"golang.org/x/text/transform"
 
-	"github.com/micro-editor/tcell/v2/terminfo"
+	"github.com/hanspr/tcell/v2/terminfo"
 
 	// import the stock terminals
-	_ "github.com/micro-editor/tcell/v2/terminfo/base"
+	_ "github.com/hanspr/tcell/v2/terminfo/base"
 )
 
 // NewTerminfoScreen returns a Screen that uses the stock TTY interface
@@ -166,14 +165,14 @@ type tScreen struct {
 	pasteOSC52Start string
 	pasteOSC52End   string
 	osc52           chan []byte
-	saved           *term.State
-	stopQ           chan struct{}
-	eventQ          chan Event
-	running         bool
-	wg              sync.WaitGroup
-	mouseFlags      MouseFlags
-	pasteEnabled    bool
-	focusEnabled    bool
+	// saved           *term.State
+	stopQ        chan struct{}
+	eventQ       chan Event
+	running      bool
+	wg           sync.WaitGroup
+	mouseFlags   MouseFlags
+	pasteEnabled bool
+	focusEnabled bool
 
 	sync.Mutex
 }
@@ -1523,7 +1522,7 @@ func (t *tScreen) parseRune(buf *bytes.Buffer, evs *[]Event) (bool, bool) {
 	return true, false
 }
 
-func (t *tScreen) parseOSC52Paste(buf *bytes.Buffer, evs *[]Event) (bool, bool) {
+func (t *tScreen) parseOSC52Paste(buf *bytes.Buffer, _ *[]Event) (bool, bool) {
 	str := buf.String()
 
 	prefixLen := len(t.pasteOSC52Start) + 2
@@ -2036,4 +2035,17 @@ func (t *tScreen) SetClipboard(register string, text []byte) error {
 	t.TPuts(fmt.Sprintf(t.pasteSet, r, str))
 
 	return err
+}
+
+func (t *tScreen) SetCursorColorShape(color, shape string) {
+	if color != "" {
+		t.TPuts("\x1b]12;" + color + "\a")
+	}
+	if shape == "block" {
+		t.SetCursorStyle(CursorStyleDefault)
+	} else if shape == "ibeam" {
+		t.SetCursorStyle(CursorStyleBlinkingBar)
+	} else if shape == "underline" {
+		t.SetCursorStyle(CursorStyleBlinkingUnderline)
+	}
 }

@@ -20,7 +20,7 @@ package tcell
 import (
 	"errors"
 
-	"github.com/micro-editor/tcell/v2/terminfo"
+	"github.com/hanspr/tcell/v2/terminfo"
 )
 
 func loadDynamicTerminfo(_ string) (*terminfo.Terminfo, error) {

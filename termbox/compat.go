@@ -19,7 +19,7 @@ package termbox
 import (
 	"errors"
 
-	"github.com/micro-editor/tcell/v2"
+	"github.com/hanspr/tcell/v2"
 )
 
 var screen tcell.Screen

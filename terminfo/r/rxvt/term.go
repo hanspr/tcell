@@ -2,7 +2,7 @@
 
 package rxvt
 
-import "github.com/micro-editor/tcell/v2/terminfo"
+import "github.com/hanspr/tcell/v2/terminfo"
 
 func init() {
 

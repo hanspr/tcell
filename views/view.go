@@ -15,7 +15,7 @@
 package views
 
 import (
-	"github.com/micro-editor/tcell/v2"
+	"github.com/hanspr/tcell/v2"
 )
 
 // View represents a logical view on an area.  It will have some underlying

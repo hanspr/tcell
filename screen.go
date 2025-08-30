@@ -274,6 +274,8 @@ type Screen interface {
 	// Tty returns the underlying Tty. If the screen is not a terminal, the
 	// returned bool will be false
 	Tty() (Tty, bool)
+
+	SetCursorColorShape(string, string)
 }
 
 // NewScreen returns a default Screen suitable for the user's terminal
@@ -346,6 +348,7 @@ type screenImpl interface {
 	GetClipboard(string) ([]byte, error)
 	SetClipboard(string, []byte) error
 	Tty() (Tty, bool)
+	SetCursorColorShape(string, string)
 
 	// Following methods are not part of the Screen api, but are used for interaction with
 	// the common layer code.

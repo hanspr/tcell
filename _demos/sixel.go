@@ -27,8 +27,8 @@ import (
 	"math"
 	"os"
 
-	"github.com/micro-editor/tcell/v2"
-	"github.com/micro-editor/tcell/v2/encoding"
+	"github.com/hanspr/tcell/v2"
+	"github.com/hanspr/tcell/v2/encoding"
 
 	"github.com/mattn/go-runewidth"
 	"github.com/mattn/go-sixel"
